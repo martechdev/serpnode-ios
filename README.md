@@ -26,5 +26,38 @@ Task {
 }
 ```
 
+## Examples
+
+### Local SEO with location
+```swift
+let sf = try await client.search(params: [
+  "q": "coffee",
+  "engine": "google",
+  "location_id": "21176", // example location id
+  "num": 20
+])
+```
+
+### Images and News
+```swift
+let images = try await client.search(params: [
+  "q": "aurora borealis",
+  "engine": "google_images",
+  "num": 30
+])
+
+let news = try await client.search(params: [
+  "q": "web performance",
+  "engine": "google_news",
+  "num": 20
+])
+```
+
+### Pagination for deeper results
+```swift
+let page1 = try await client.search(params: ["q": "meteor tutorial", "engine": "google", "start": 0, "num": 10])
+let page2 = try await client.search(params: ["q": "meteor tutorial", "engine": "google", "start": 10, "num": 10])
+```
+
 ## License
 MIT
